@@ -1,3 +1,8 @@
 <h1>
   {{title}}
 </h1>
+Lista de Herois
+<p>Total de herois {{allHeroes?.length}}</p>
+<ul>
+  <li *ngFor="let hero of allHeroes">{{hero.name}}</li>
+</ul>

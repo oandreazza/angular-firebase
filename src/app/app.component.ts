@@ -12,17 +12,23 @@ import {firebaseConfig} from '../environments/firebase.config';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  title = 'app works!';
+  title = 'Heroes!';
 
   allHeroes: Hero[];
   originalHeroes: Hero[];
+  user;
 
-  constructor(private service: HeroService){}
+  constructor(public service: HeroService){}
 
 
   ngOnInit(): void{
     this.service.getAll()
     .subscribe(heroes => this.allHeroes = this.originalHeroes = heroes);
+
+    this.service.af.auth.subscribe( user => {
+      console.log(user);
+      this.user = user;
+    });
   }
 
   search(name: string): void{
@@ -32,5 +38,13 @@ export class AppComponent implements OnInit{
   save(name: string): void{
     let hero = new Hero(name);
     this.service.save(hero);
+  }
+
+  login() {
+    this.service.login();
+  }
+
+  logout() {
+     this.service.logout();
   }
 }

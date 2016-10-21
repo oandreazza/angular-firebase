@@ -2,13 +2,18 @@
   {{title}}
 </h1>
 
-<h2>New Hero</h2>
+<img src="{{user?.auth.photoURL}}" />
+<div> Email: {{ user?.auth.email }} </div>
+<button (click)="login()">Login</button>
+<button (click)="logout()">Logout</button>
+
+<h2>New</h2>
 <p>
   <input autofocus placeholder="Name" type="text" #newHeroName name="name" />
 </p>
 <button (click)="save(newHeroName.value);newHeroName.value=''">Save</button>
 
-<h2>Heroes List</h2>
+<h2>List</h2>
 <p>Total: <b>{{allHeroes?.length}}</b></p>
 <p>
   <input autofocus placeholder="Search" type="text" #heroName name="name" (keyup)="search(heroName.value)">

@@ -6,10 +6,12 @@ import {initializeApp, database} from 'firebase';
 
 import { Hero } from './hero'
 
+
+
 @Injectable()
 export class HeroService {
 
-  constructor(private af: AngularFire){
+  constructor(public af: AngularFire){
 
   }
 
@@ -19,6 +21,15 @@ export class HeroService {
 
   save(hero: Hero): void{
       this.af.database.list('heroes').push(hero);
+  }
+
+  login():  any{
+    this.af.auth.login();
+    return this.af.auth;
+  }
+
+  logout() {
+     this.af.auth.logout();
   }
 
 }

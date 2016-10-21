@@ -4,8 +4,8 @@
 
 <img src="{{user?.auth.photoURL}}" />
 <div> Email: {{ user?.auth.email }} </div>
-<button (click)="login()">Login</button>
-<button (click)="logout()">Logout</button>
+<button (click)="login()" *ngIf="!user">Login</button>
+<button (click)="logout()" *ngIf="user">Logout</button>
 
 <h2>New</h2>
 <p>

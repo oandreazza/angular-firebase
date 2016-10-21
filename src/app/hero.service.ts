@@ -17,4 +17,8 @@ export class HeroService {
     return this.af.database.list('heroes');
   }
 
+  save(hero: Hero): void{
+      this.af.database.list('heroes').push(hero);
+  }
+
 }

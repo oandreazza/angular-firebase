@@ -1,8 +1,18 @@
 <h1>
   {{title}}
 </h1>
-Lista de Herois
-<p>Total de herois {{allHeroes?.length}}</p>
+
+<h2>New Hero</h2>
+<p>
+  <input autofocus placeholder="Name" type="text" #newHeroName name="name" />
+</p>
+<button (click)="save(newHeroName.value);newHeroName.value=''">Save</button>
+
+<h2>Heroes List</h2>
+<p>Total: <b>{{allHeroes?.length}}</b></p>
+<p>
+  <input autofocus placeholder="Search" type="text" #heroName name="name" (keyup)="search(heroName.value)">
+</p>
 <ul>
   <li *ngFor="let hero of allHeroes">{{hero.name}}</li>
 </ul>

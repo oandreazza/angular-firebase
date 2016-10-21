@@ -15,12 +15,22 @@ export class AppComponent implements OnInit{
   title = 'app works!';
 
   allHeroes: Hero[];
+  originalHeroes: Hero[];
 
   constructor(private service: HeroService){}
 
 
   ngOnInit(): void{
     this.service.getAll()
-    .subscribe(heroes => this.allHeroes = heroes);
+    .subscribe(heroes => this.allHeroes = this.originalHeroes = heroes);
+  }
+
+  search(name: string): void{
+    this.allHeroes = this.originalHeroes.filter(hero => hero.name.includes(name));
+  }
+
+  save(name: string): void{
+    let hero = new Hero(name);
+    this.service.save(hero);
   }
 }

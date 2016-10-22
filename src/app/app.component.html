@@ -15,30 +15,39 @@
   </div>
 </nav>
 
+<div class="container-fluid">
+  <alert type="success" *ngFor="let alert of alerts" dismissible="true" dismissOnTimeout="3000">{{ alert?.msg }}</alert>
+  <h4>{{action}}</h4>
+  <p>
+    <input autofocus [(ngModel)]="hero.name" placeholder="Name" type="text" name="name" />
+  </p>
+  <button class="btn btn-default btn-sm" *ngIf="hero.$key" (click)="cancel();">Cancel</button>
+  <button class="btn btn-default btn-sm" (click)="save()">Save</button>
 
-<alert type="success" *ngFor="let alert of alerts" dismissible="true" dismissOnTimeout="3000">{{ alert?.msg }}</alert>
-<h2>{{action}}</h2>
-<p>
-  <input autofocus [(ngModel)]="hero.name" placeholder="Name" type="text" name="name" />
-</p>
-<button class="btn btn-default btn-sm" *ngIf="hero.$key" (click)="cancel();">Cancel</button>
-<button class="btn btn-default btn-sm" (click)="save()">Save</button>
+  <h4>List</h4>
 
-<h2>List</h2>
-<p>Total: <b>{{allHeroes?.length}}</b></p>
-<p>
-  <button class="btn btn-danger btn-sm" *ngIf="hasHeroes" (click)="clean()">Clean</button>
-</p>
-<p>
-  <input placeholder="Search" type="text" #heroName name="name" (keyup)="search(heroName.value)">
-</p>
-<p *ngIf="!hasHeroes">
-  No heroes
-</p>
-<ul *ngIf="hasHeroes">
-  <li *ngFor="let hero of allHeroes" (click)="find(hero,hero.$key)">{{hero.name}}
-    <button type="button" class="close" aria-label="Close" (click)="delete(hero.$key)">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </li>
-</ul>
+  <p>
+    <button class="btn btn-danger btn-sm" *ngIf="hasHeroes" (click)="clean()">Clean</button>
+  </p>
+  <p>
+    <input placeholder="Search" type="text" #heroName name="name" (keyup)="search(heroName.value)">
+  </p>
+  <p>
+    Total <span class="badge">{{allHeroes?.length}}</span>
+  </p>
+  <alert class="col-md-6" type="warning" *ngIf="!hasHeroes">
+    No heroes
+  </alert>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="list-group" *ngIf="hasHeroes">
+        <a href="#" class="list-group-item" *ngFor="let heroList of allHeroes" [class.active]="heroList == hero" (click)="find(heroList,heroList.$key)">
+          {{heroList.name}}
+          <button type="button" class="close" aria-label="Close" (click)="delete(heroList.$key)">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

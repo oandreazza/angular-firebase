@@ -1,23 +1,44 @@
-<h1>
-  {{title}}
-</h1>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        {{title}}
+      </a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <p class="navbar-text navbar-right">
+        {{ user?.auth.email }} <img *ngIf="user" src="{{user?.auth.photoURL}}" class="img-circle" />
+        <button class="btn btn-primary btn-xs" (click)="login()" *ngIf="!user">Login</button>
+        <button class="btn btn-danger btn-xs" (click)="logout()" *ngIf="user">Logout</button>
+      </p>
+    </div>
+  </div>
+</nav>
 
-<img src="{{user?.auth.photoURL}}" />
-<div> Email: {{ user?.auth.email }} </div>
-<button (click)="login()" *ngIf="!user">Login</button>
-<button (click)="logout()" *ngIf="user">Logout</button>
 
-<h2>New</h2>
+<alert type="success" *ngFor="let alert of alerts" dismissible="true" dismissOnTimeout="3000">{{ alert?.msg }}</alert>
+<h2>{{action}}</h2>
 <p>
-  <input autofocus placeholder="Name" type="text" #newHeroName name="name" />
+  <input autofocus [(ngModel)]="hero.name" placeholder="Name" type="text" name="name" />
 </p>
-<button (click)="save(newHeroName.value);newHeroName.value=''">Save</button>
+<button class="btn btn-default btn-sm" *ngIf="hero.$key" (click)="cancel();">Cancel</button>
+<button class="btn btn-default btn-sm" (click)="save()">Save</button>
 
 <h2>List</h2>
 <p>Total: <b>{{allHeroes?.length}}</b></p>
 <p>
-  <input autofocus placeholder="Search" type="text" #heroName name="name" (keyup)="search(heroName.value)">
+  <button class="btn btn-danger btn-sm" *ngIf="hasHeroes" (click)="clean()">Clean</button>
 </p>
-<ul>
-  <li *ngFor="let hero of allHeroes">{{hero.name}}</li>
+<p>
+  <input placeholder="Search" type="text" #heroName name="name" (keyup)="search(heroName.value)">
+</p>
+<p *ngIf="!hasHeroes">
+  No heroes
+</p>
+<ul *ngIf="hasHeroes">
+  <li *ngFor="let hero of allHeroes" (click)="find(hero,hero.$key)">{{hero.name}}
+    <button type="button" class="close" aria-label="Close" (click)="delete(hero.$key)">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </li>
 </ul>

@@ -12,7 +12,6 @@ import { Hero } from './hero'
 export class HeroService {
 
   constructor(public af: AngularFire){
-
   }
 
   getAll(): FirebaseListObservable<Hero[]>{
@@ -20,7 +19,25 @@ export class HeroService {
   }
 
   save(hero: Hero): void{
-      this.af.database.list('heroes').push(hero);
+    const ref = this.af.database.list('heroes');
+    ref.push(hero);
+  }
+
+  update(key: string, hero: Hero): void{
+    const ref = this.af.database.list('heroes');
+    ref.update(key,{
+      name: hero.name
+    })
+  }
+
+  delete(key: string): void{
+    const ref = this.af.database.list('heroes');
+    ref.remove(key);
+  }
+
+  clean(): void{
+    const ref = this.af.database.list('heroes');
+    ref.remove();
   }
 
   login():  any{

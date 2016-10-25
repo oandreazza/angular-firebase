@@ -1,0 +1,28 @@
+<div class="pull-right">
+  <button class="btn btn-primary" routerLink="create">Create</button>
+</div>
+<table class="table">
+  <thead class="thead-inverse">
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let hero of heroes; let i = index">
+      <td>
+        {{i}}
+      </td>
+      <td>
+        {{hero.name}}
+      </td>
+      <td>
+        <span class="glyphicon glyphicon-pencil" (click)="edit(hero.$key)" aria-hidden="true"></span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div>
+  Total <span class="badge">{{heroes?.length}}</span>
+</div>

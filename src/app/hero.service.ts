@@ -15,12 +15,12 @@ export class HeroService {
   }
 
   getAll(): FirebaseListObservable<Hero[]>{
-    return this.af.database.list('heroes');
+    return this.af.database.list('heroes')
   }
 
-  save(hero: Hero): void{
+  save(hero: Hero): any{
     const ref = this.af.database.list('heroes');
-    ref.push(hero);
+    return ref.push(hero);
   }
 
   update(key: string, hero: Hero): void{

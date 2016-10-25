@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" routerLink="heroes">
         {{title}}
       </a>
     </div>
@@ -14,40 +14,6 @@
     </div>
   </div>
 </nav>
-
 <div class="container-fluid">
-  <alert type="success" *ngFor="let alert of alerts" dismissible="true" dismissOnTimeout="3000">{{ alert?.msg }}</alert>
-  <h4>{{action}}</h4>
-  <p>
-    <input autofocus [(ngModel)]="hero.name" placeholder="Name" type="text" name="name" />
-  </p>
-  <button class="btn btn-default btn-sm" *ngIf="hero.$key" (click)="cancel();">Cancel</button>
-  <button class="btn btn-default btn-sm" (click)="save()">Save</button>
-
-  <h4>List</h4>
-
-  <p>
-    <button class="btn btn-danger btn-sm" *ngIf="hasHeroes" (click)="clean()">Clean</button>
-  </p>
-  <p>
-    <input placeholder="Search" type="text" #heroName name="name" (keyup)="search(heroName.value)">
-  </p>
-  <p>
-    Total <span class="badge">{{allHeroes?.length}}</span>
-  </p>
-  <alert class="col-md-6" type="warning" *ngIf="!hasHeroes">
-    No heroes
-  </alert>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="list-group" *ngIf="hasHeroes">
-        <a href="#" class="list-group-item" *ngFor="let heroList of allHeroes" [class.active]="heroList == hero" (click)="find(heroList,heroList.$key)">
-          {{heroList.name}}
-          <button type="button" class="close" aria-label="Close" (click)="delete(heroList.$key)">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </a>
-      </div>
-    </div>
-  </div>
+  <router-outlet></router-outlet>
 </div>

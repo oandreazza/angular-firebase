@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
-
 import { HeroService } from './hero.service';
-
 import { Hero } from './hero';
 
-import {firebaseConfig} from '../environments/firebase.config';
 
 @Component({
   selector: 'app-root',
@@ -30,12 +26,7 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void{
     this.hero = new Hero('');
-    this.service.getAll()
-      .subscribe(heroes => {
-        this.allHeroes = this.originalHeroes = heroes;
-        this.hasHeroes = this.allHeroes.length > 0;
-      });
-
+    
     this.service.af.auth
       .subscribe( user => {
         this.user = user;

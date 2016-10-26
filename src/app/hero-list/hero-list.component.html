@@ -4,25 +4,29 @@
 <table class="table">
   <thead class="thead-inverse">
     <tr>
-      <th>#</th>
       <th>Name</th>
       <th>Actions</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let hero of heroes; let i = index">
-      <td>
-        {{i}}
-      </td>
+    <tr *ngFor="let hero of heroes;">
       <td>
         {{hero.name}}
       </td>
       <td>
         <span class="glyphicon glyphicon-pencil" (click)="edit(hero.$key)" aria-hidden="true"></span>
+        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
       </td>
     </tr>
   </tbody>
 </table>
-<div>
-  Total <span class="badge">{{heroes?.length}}</span>
+<div class="pull-right">
+  Total <span class="badge">{{allHeroes?.length}}</span>
 </div>
+<nav aria-label="Page navigation">
+  <ul class="pagination">
+    <li [class.active]="currentPage==page" *ngFor="let page of pages">
+      <a (click)="paginate(page)">{{page}}</a>
+    </li>
+  </ul>
+</nav>

@@ -17,6 +17,8 @@ import { HeroCreateComponent } from './hero-create/hero-create.component';
 import { HeroEditComponent } from './hero-edit/hero-edit.component';
 
 import { AppRoutingModule } from './app-routing.module';
+import { NotificationsComponent } from './notifications/notifications.component';
+import { NotificationService } from './notification.service';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import { AppRoutingModule } from './app-routing.module';
     HeroFormComponent,
     HeroCreateComponent,
     HeroEditComponent,
+    NotificationsComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,7 @@ import { AppRoutingModule } from './app-routing.module';
     AlertModule,
     AppRoutingModule
   ],
-  providers: [HeroService],
+  providers: [HeroService, NotificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
+import { NotificationService } from '../notification.service';
+import { Notification } from '../notification';
 
 @Component({
   selector: 'app-hero-create',
@@ -14,7 +16,8 @@ export class HeroCreateComponent implements OnInit {
   hero = new Hero('');
 
 
-  constructor(private service: HeroService) { }
+  constructor(private service: HeroService,
+              private notification: NotificationService) { }
 
   ngOnInit() {
   }
@@ -22,7 +25,10 @@ export class HeroCreateComponent implements OnInit {
   save(hero: Hero){
     this.service.save(hero)
       .then(
-        () => history.back()
+        () => {
+            history.back();
+            this.notification.add( new Notification('success', 'Hero created with success!'));
+          }
       )
       .catch(
         error => console.log(error)

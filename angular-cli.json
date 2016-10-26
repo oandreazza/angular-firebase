@@ -27,7 +27,12 @@
     }
   ],
   "addons": [],
-  "packages": [],
+  "packages": {
+    "rxjs":  {
+      "main": "../node_modules/rxrs/Rx.js"
+    }
+
+  },
   "e2e": {
     "protractor": {
       "config": "./protractor.conf.js"

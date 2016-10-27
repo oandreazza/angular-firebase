@@ -5,10 +5,28 @@ import { HeroListComponent }      from './hero-list/hero-list.component';
 import { HeroCreateComponent }    from './hero-create/hero-create.component';
 import { HeroEditComponent }    from './hero-edit/hero-edit.component';
 
+import { HeroResolver} from './hero.resolver';
+
 const appRoutes: Routes = [
   {
     path: 'heroes',
-    component: HeroListComponent
+    children:[
+      {
+        path: '',
+        component: HeroListComponent
+      },
+      {
+        path: 'create',
+        component: HeroCreateComponent
+      },
+      {
+        path: 'edit/:key',
+        component: HeroEditComponent,
+        resolve: {
+          hero: HeroResolver
+        }
+      }
+    ]
   },
 
   {
@@ -16,14 +34,6 @@ const appRoutes: Routes = [
   	redirectTo: '/heroes',
   	pathMatch: 'full'
   },
-  {
-    path: 'heroes/create',
-    component: HeroCreateComponent
-  },
-  {
-    path: 'heroes/edit/:key',
-    component: HeroEditComponent
-  }
 
 ];
 

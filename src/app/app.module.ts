@@ -15,10 +15,12 @@ import { HeroListComponent } from './hero-list/hero-list.component';
 import { HeroFormComponent } from './hero-form/hero-form.component';
 import { HeroCreateComponent } from './hero-create/hero-create.component';
 import { HeroEditComponent } from './hero-edit/hero-edit.component';
+import { HeroResolver } from './hero.resolver';
 
 import { AppRoutingModule } from './app-routing.module';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { NotificationService } from './notification.service';
+
 
 @NgModule({
   declarations: [
@@ -37,7 +39,7 @@ import { NotificationService } from './notification.service';
     AlertModule,
     AppRoutingModule
   ],
-  providers: [HeroService, NotificationService],
+  providers: [HeroService, NotificationService, HeroResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

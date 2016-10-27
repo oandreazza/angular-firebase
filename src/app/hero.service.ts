@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { AngularFire, FirebaseListObservable } from 'angularfire2/index'
+import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/index'
 
 import {initializeApp, database} from 'firebase';
 
@@ -18,14 +18,18 @@ export class HeroService {
     return this.af.database.list('heroes')
   }
 
+  find(key: string): FirebaseObjectObservable<Hero>{
+    return this.af.database.object(`heroes/${key}`);
+  }
+
   save(hero: Hero): any{
     const ref = this.af.database.list('heroes');
     return ref.push(hero);
   }
 
-  update(key: string, hero: Hero): void{
+  update(key: string, hero: Hero): any{
     const ref = this.af.database.list('heroes');
-    ref.update(key,{
+    return ref.update(key,{
       name: hero.name
     })
   }
@@ -34,6 +38,8 @@ export class HeroService {
     const ref = this.af.database.list('heroes');
     ref.remove(key);
   }
+
+
 
   clean(): void{
     const ref = this.af.database.list('heroes');

@@ -1,2 +1,16 @@
-<button class="btn btn-primary btn-xs" (click)="login()" *ngIf="!user">Login</button>
-<button class="btn btn-danger btn-xs" (click)="logout()" *ngIf="user">Logout</button>
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Heroes Admin</h3>
+            </div>
+            <div class="panel-body">
+                <button type="button" class="btn btn-default center-block" (click)="login()" *ngIf="!user">
+                  <i class="fa fa-google" aria-hidden="true"></i> Login with Google
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4"></div>
+</div>

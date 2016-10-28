@@ -4,12 +4,15 @@ import { Routes, RouterModule } from '@angular/router';
 import { HeroListComponent }      from './hero-list/hero-list.component';
 import { HeroCreateComponent }    from './hero-create/hero-create.component';
 import { HeroEditComponent }    from './hero-edit/hero-edit.component';
+import { LoginComponent } from './login/login.component';
 
 import { HeroResolver} from './hero.resolver';
+import { AuthGuardService } from './auth-guard.service';
 
 const appRoutes: Routes = [
   {
     path: 'heroes',
+    canActivateChild: [AuthGuardService],
     children:[
       {
         path: '',
@@ -28,7 +31,10 @@ const appRoutes: Routes = [
       }
     ]
   },
-
+  {
+    path: 'login',
+    component: LoginComponent
+  },
   {
   	path: '',
   	redirectTo: '/heroes',

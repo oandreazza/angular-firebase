@@ -28,7 +28,6 @@ export class HeroListComponent implements OnInit {
       .subscribe(heroes => {
           this.pages = new Array();
           this.heroes = this.allHeroes = heroes;
-          //this.hasHeroes = this.allHeroes.length > 0;
           this.heroes = this.allHeroes.slice(0,10);
           let totalPages = Math.floor(this.allHeroes.length / 10)+1;
           for(let i = 1; i <= totalPages; i++){

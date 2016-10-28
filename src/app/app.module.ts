@@ -20,7 +20,9 @@ import { HeroResolver } from './hero.resolver';
 import { AppRoutingModule } from './app-routing.module';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { NotificationService } from './notification.service';
-
+import { AuthGuardService } from './auth-guard.service';
+import { AuthService } from './auth.service';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { NotificationService } from './notification.service';
     HeroFormComponent,
     HeroCreateComponent,
     HeroEditComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,7 @@ import { NotificationService } from './notification.service';
     AlertModule,
     AppRoutingModule
   ],
-  providers: [HeroService, NotificationService, HeroResolver],
+  providers: [HeroService, NotificationService, HeroResolver, AuthGuardService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

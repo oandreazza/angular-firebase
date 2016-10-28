@@ -11,7 +11,7 @@ import { Hero } from './hero'
 @Injectable()
 export class HeroService {
 
-  constructor(public af: AngularFire){
+  constructor(private af: AngularFire){
   }
 
   getAll(): FirebaseListObservable<Hero[]>{
@@ -39,20 +39,10 @@ export class HeroService {
     ref.remove(key);
   }
 
-
-
   clean(): void{
     const ref = this.af.database.list('heroes');
     ref.remove();
   }
 
-  login():  any{
-    this.af.auth.login();
-    return this.af.auth;
-  }
-
-  logout() {
-     this.af.auth.logout();
-  }
 
 }

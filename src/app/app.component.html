@@ -8,7 +8,6 @@
     <div class="collapse navbar-collapse">
       <p class="navbar-text navbar-right">
         {{ user?.auth.email }} <img *ngIf="user" src="{{user?.auth.photoURL}}" class="img-circle" />
-        <button class="btn btn-primary btn-xs" (click)="login()" *ngIf="!user">Login</button>
         <button class="btn btn-danger btn-xs" (click)="logout()" *ngIf="user">Logout</button>
       </p>
     </div>

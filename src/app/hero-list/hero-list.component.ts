@@ -42,6 +42,10 @@ export class HeroListComponent implements OnInit {
     this.router.navigate(['heroes/edit', key]);
   }
 
+  delete(key: string){
+    this.service.delete(key);
+  }
+
   paginate(page: number){
     this.currentPage = page;
     let next = this.currentPage * this.recordsPerPage;

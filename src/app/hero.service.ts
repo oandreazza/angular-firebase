@@ -24,7 +24,7 @@ export class HeroService {
 
   save(hero: Hero): any{
     const ref = this.af.database.list('heroes');
-    return ref.push(hero);
+    return ref.push({name : hero.name} );
   }
 
   update(key: string, hero: Hero): any{

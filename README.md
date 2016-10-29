@@ -1,17 +1,30 @@
 # Angular2 with Google Firebase Realtime Database
 This is a simple app using Angular2 and Google Firebase Realtime Database.
 
-## How to run
+## How to run - Docker
+### 1. Docker compose
+```sh
+$ docker-compose up -d
+```
+#### 2. Open your browser
+```
+http://localhost:4200/
+```
+### 3. Enjoy :thumbsup:
 
-## 1. Install dependencies
+
+
+## How to run - Node
+### 1. Install dependencies
 ```sh
 $ npm install
+$ npm install -g angular-cli
 ```
-## 2. Run in development mode
+### 2. Run in development mode
 ```sh
 $ ng serve
 ```
-### 3. Open your browser
+#### 3. Open your browser
 ```
 http://localhost:4200/
 ```

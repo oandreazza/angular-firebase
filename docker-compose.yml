@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+
+  front:
+    build: ./front
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "4200:4200"

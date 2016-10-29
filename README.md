@@ -6,7 +6,7 @@ This is a simple app using Angular2 and Google Firebase Realtime Database.
 ```sh
 $ docker-compose up -d
 ```
-#### 2. Open your browser
+### 2. Open your browser
 ```
 http://localhost:4200/
 ```
@@ -24,7 +24,7 @@ $ npm install -g angular-cli
 ```sh
 $ ng serve
 ```
-#### 3. Open your browser
+### 3. Open your browser
 ```
 http://localhost:4200/
 ```

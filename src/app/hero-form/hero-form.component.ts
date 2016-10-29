@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, EventEmitter , Output} from '@angular/core';
 
 import { Hero } from '../hero';
+import {GeolocationService} from '../geolocation.service';
 
 @Component({
   selector: 'hero-form',
@@ -15,13 +16,19 @@ export class HeroFormComponent implements OnInit {
   @Output()
   saveRequest = new EventEmitter<Hero>();
 
-  constructor() { }
+  constructor(private geolocationService: GeolocationService) { }
 
   ngOnInit() {
   }
 
   save(): void{
     this.saveRequest.emit(this.hero);
+  }
+
+  getLocation(address: string){
+      this.geolocationService
+        .getLocation(address)
+        .subscribe( map => console.log(map));
   }
 
 }

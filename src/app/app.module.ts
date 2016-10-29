@@ -23,6 +23,7 @@ import { NotificationService } from './notification.service';
 import { AuthGuardService } from './auth-guard.service';
 import { AuthService } from './auth.service';
 import { LoginComponent } from './login/login.component';
+import { GeolocationService } from './geolocation.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,7 @@ import { LoginComponent } from './login/login.component';
     AlertModule,
     AppRoutingModule
   ],
-  providers: [HeroService, NotificationService, HeroResolver, AuthGuardService, AuthService],
+  providers: [HeroService, NotificationService, HeroResolver, AuthGuardService, AuthService, GeolocationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

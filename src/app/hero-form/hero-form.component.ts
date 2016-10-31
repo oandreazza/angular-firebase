@@ -25,10 +25,10 @@ export class HeroFormComponent implements OnInit {
     this.saveRequest.emit(this.hero);
   }
 
-  getLocation(address: string){
+  getLocation(){
       this.geolocationService
-        .getLocation(address)
-        .subscribe( map => console.log(map));
+        .getLocation(this.hero.location.address)
+        .subscribe( location => this.hero.location = location);
   }
 
 }

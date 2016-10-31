@@ -28,7 +28,7 @@ export class HeroEditComponent implements OnInit {
   }
 
   edit(hero: Hero){
-    let key = hero.$key;
+    let key = "123";
 
     this.service.update(key,hero)
       .then( () => {

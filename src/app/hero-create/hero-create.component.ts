@@ -6,33 +6,30 @@ import { NotificationService } from '../notification.service';
 import { Notification } from '../notification';
 
 @Component({
-  selector: 'app-hero-create',
-  templateUrl: './hero-create.component.html',
-  styleUrls: ['./hero-create.component.css']
+    selector: 'app-hero-create',
+    templateUrl: './hero-create.component.html',
+    styleUrls: ['./hero-create.component.css']
 })
 export class HeroCreateComponent implements OnInit {
 
 
-  hero = new Hero('');
+    hero = new Hero('');
 
 
-  constructor(private service: HeroService,
-              private notification: NotificationService) { }
+    constructor(private service: HeroService,
+        private notification: NotificationService) { }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
-  save(hero: Hero){
-    this.service.save(hero)
-      .then(
-        () => {
-            history.back();
-            this.notification.add( new Notification('success', 'Hero created with success!'));
-          }
-      )
-      .catch(
-        error => console.log(error)
-      );
-  }
+    save(hero: Hero) {
+        this.service.save(hero)
+            .then(
+            () => {
+                history.back();
+                this.notification.add(new Notification('success', 'Hero created with success!'));
+            })
+            .catch(error => console.log(error));
+    }
 
 }

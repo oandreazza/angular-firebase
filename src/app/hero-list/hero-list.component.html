@@ -5,6 +5,12 @@
     <thead class="thead-inverse">
         <tr>
             <th>Name</th>
+            <th>
+                Street
+            </th>
+            <th>
+                Distance(KM)
+            </th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -12,6 +18,12 @@
         <tr *ngFor="let hero of heroes;">
             <td>
                 {{hero.name}}
+            </td>
+            <td>
+                {{hero?.location?.address}}
+            </td>
+            <td>
+                {{geolocationService.getDistanceFromLatLonInKm(currentLocation,hero?.location)}}
             </td>
             <td>
                 <span class="glyphicon glyphicon-pencil" (click)="edit(hero.$key)" aria-hidden="true"></span>

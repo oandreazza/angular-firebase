@@ -14,8 +14,13 @@ export class HeroService {
   constructor(private af: AngularFire){
   }
 
-  getAll(): FirebaseListObservable<Hero[]>{
-    return this.af.database.list('heroes')
+  getAll(name?:string): FirebaseListObservable<Hero[]>{
+    return this.af.database.list('heroes',{
+      query : {
+        orderByChild: 'name',
+        equalTo: name
+      }
+    })
   }
 
   find(key: string): FirebaseObjectObservable<Hero>{

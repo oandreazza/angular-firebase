@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, Params } from '@angular/router';
+import { Observable } from 'rxjs/Rx';
 
 import { HeroService } from '../hero.service';
 import { Hero } from '../hero';
@@ -21,23 +22,34 @@ export class HeroListComponent implements OnInit {
     private heroService: HeroService,
     private router: Router){}
 
+
+
   ngOnInit() {
     this.currentPage = 1;
+    const searchInput:any = document.querySelector('#search');
+    const search$ = Observable.fromEvent(searchInput,'keyup');
+    const data$ = this.service.getAll();
 
-    this.service.getAll()
-      .subscribe(heroes => {
-          this.pages = new Array();
-          this.heroes = this.allHeroes = heroes;
-          this.heroes = this.allHeroes.slice(0,10);
-          let totalPages = Math.floor(this.allHeroes.length / 10)+1;
-          for(let i = 1; i <= totalPages; i++){
-            this.pages.push(i);
-          }
-        },
-    );
+    const searchEvent$ = search$
+      .switchMap( () => this.service.getAll(searchInput.value));
+
+    searchEvent$
+      .subscribe(heroes => this.pagination(heroes));
+
+    data$
+      .subscribe( heroes => this.pagination(heroes));
 
   }
 
+  pagination(heroes: Hero[]){
+    this.pages = new Array();
+    this.heroes = this.allHeroes = heroes;
+    this.heroes = this.allHeroes.slice(0,10);
+    let totalPages = Math.floor(this.allHeroes.length / 10)+1;
+    for(let i = 1; i <= totalPages; i++){
+      this.pages.push(i);
+    }
+  }
   edit(key: string){
     this.router.navigate(['heroes/edit', key]);
   }

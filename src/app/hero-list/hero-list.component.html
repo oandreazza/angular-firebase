@@ -9,7 +9,7 @@
                 Street
             </th>
             <th>
-                Distance(KM)
+                Distance
             </th>
             <th>Actions</th>
         </tr>
@@ -23,7 +23,7 @@
                 {{hero?.location?.address}}
             </td>
             <td>
-                {{geolocationService.getDistanceFromLatLonInKm(currentLocation,hero?.location)}}
+                {{geolocationService.getDistanceFromLatLonInKm(currentLocation,hero?.location) | distance}}
             </td>
             <td>
                 <span class="glyphicon glyphicon-pencil" (click)="edit(hero.$key)" aria-hidden="true"></span>

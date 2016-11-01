@@ -10,7 +10,7 @@ export class GeolocationService {
 
     getLocation(address: string) {
         return this.http
-            .get(`http://maps.googleapis.com/maps/api/geocode/json?address=${address}`)
+            .get(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}`)
             .map(res => res.json())
             .map(result => {
                 let location = new Location();

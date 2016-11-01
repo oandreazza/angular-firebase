@@ -6,6 +6,7 @@ import { GeolocationService } from '../geolocation.service';
 import { Hero } from '../hero';
 import { Location } from '../location';
 import { Subject } from 'rxjs/Rx';
+import { DistancePipe } from  '../distance.pipe'
 
 @Component({
     selector: 'hero-list',

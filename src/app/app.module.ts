@@ -24,6 +24,7 @@ import { AuthGuardService } from './auth-guard.service';
 import { AuthService } from './auth.service';
 import { LoginComponent } from './login/login.component';
 import { GeolocationService } from './geolocation.service';
+import { DistancePipe } from './distance.pipe';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { GeolocationService } from './geolocation.service';
     HeroCreateComponent,
     HeroEditComponent,
     NotificationsComponent,
-    LoginComponent
+    LoginComponent,
+    DistancePipe
   ],
   imports: [
     BrowserModule,

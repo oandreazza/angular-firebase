@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router, Params } from '@angular/router';
 
 import { HeroService } from '../hero.service';
-import { GeolocationService } from '../geolocation.service';
+
 import { Hero } from '../hero';
 import { Location } from '../location';
 import { Subject } from 'rxjs/Rx';
 import { DistancePipe } from  '../distance.pipe'
-
+import { GeolocationService } from '../geolocation.service';
 @Component({
     selector: 'hero-list',
     templateUrl: './hero-list.component.html',
@@ -24,18 +24,13 @@ export class HeroListComponent implements OnInit {
 
 
     constructor(public service: HeroService,
-        private geolocationService: GeolocationService,
-        private router: Router) { }
+        private router: Router,
+        private geolocationService: GeolocationService) {}
 
 
     ngOnInit() {
         this.currentPage = 1;
-
-        this.geolocationService.getCurrentLocation()
-            .subscribe(location => {
-                this.currentLocation = location;
-            });
-
+        this.currentLocation = JSON.parse(localStorage.getItem('currentLocation'));
         this.service.getAll()
             .subscribe(heroes => {
                 this.pages = new Array();

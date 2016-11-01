@@ -1,0 +1,8 @@
+<sebm-google-map [latitude]="currentLocation.latitude" [longitude]="currentLocation.longitude" [zoom]="8" >
+  <sebm-google-map-marker *ngFor="let hero of heroes" [openInfoWindow]="true" [title]="hero.name" [latitude]="hero.location.latitude" [longitude]="hero.location.longitude">
+    <sebm-google-map-info-window [disableAutoPan]="true">
+         <b>{{hero.name}}</b><br>
+            {{hero.location.address}}
+       </sebm-google-map-info-window>
+  </sebm-google-map-marker>
+</sebm-google-map>

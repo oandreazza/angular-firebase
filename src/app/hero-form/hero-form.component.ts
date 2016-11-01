@@ -1,7 +1,10 @@
-import { Component, OnInit, Input, EventEmitter , Output} from '@angular/core';
+import { Component, OnInit, Input, EventEmitter , Output, Inject} from '@angular/core';
 
 import { Hero } from '../hero';
 import {GeolocationService} from '../geolocation.service';
+import { FirebaseApp, AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/index'
+
+import {initializeApp} from 'firebase';
 
 @Component({
   selector: 'hero-form',
@@ -16,13 +19,19 @@ export class HeroFormComponent implements OnInit {
   @Output()
   saveRequest = new EventEmitter<Hero>();
 
-  constructor(private geolocationService: GeolocationService) { }
+  constructor(private geolocationService: GeolocationService,
+              @Inject(FirebaseApp)private af: any) { }
 
   ngOnInit() {
   }
 
   save(): void{
     this.saveRequest.emit(this.hero);
+  }
+
+  upload(file: any){
+    const ref =  this.af.storage().ref();
+    ref.child("teste.jpg").put(file.files[0]);
   }
 
   getLocation(){

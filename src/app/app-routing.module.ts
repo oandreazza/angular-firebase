@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 
 import { HeroResolver} from './hero.resolver';
 import { AuthGuardService } from './auth-guard.service';
+import { HeroMapsComponent } from './hero-maps/hero-maps.component'
 
 const appRoutes: Routes = [
   {
@@ -28,6 +29,10 @@ const appRoutes: Routes = [
         resolve: {
           hero: HeroResolver
         }
+      },
+      {
+        path: 'maps',
+        component: HeroMapsComponent
       }
     ]
   },

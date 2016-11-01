@@ -18,6 +18,19 @@ export class HeroService {
     return this.af.database.list('heroes')
   }
 
+  getAllWithMaps(): FirebaseListObservable<Hero[]>{
+    return this.af.database.list('heroes',{
+      query:{
+        // orderByChild: "name",
+        orderByChild: "location",
+        startAt: 1
+        //startAt: 'mau',
+        //endAt: 'mau\uf8ff'
+      }
+    })
+
+  }
+
   find(key: string): FirebaseObjectObservable<Hero>{
     return this.af.database.object(`heroes/${key}`);
   }

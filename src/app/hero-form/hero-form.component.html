@@ -9,9 +9,14 @@
                 <input type="text" [(ngModel)]="hero.name" class="form-control" name="name" id="name" required placeholder="Name">
             </div>
             <div class="form-group">
+                <label for="name">Name</label>
+                <input type="file" #file class="form-control" name="file" id="file" required placeholder="File">
+            </div>
+            <div class="form-group">
                 <label for="name">Address</label>
                 <input type="text" [(ngModel)]="hero.location.address" (change)="getLocation()" class="form-control" name="address" id="address" required placeholder="Street N°, City">
             </div>
+            <button type="button" class="btn pull-right btn-primary" (click)="upload(file)">Upload</button>
             <button type="button" class="btn pull-right btn-primary" (click)="save()" [disabled]="!heroForm.form.valid">Submit</button>
         </form>
     </div>

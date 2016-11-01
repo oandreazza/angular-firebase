@@ -25,6 +25,8 @@ import { AuthService } from './auth.service';
 import { LoginComponent } from './login/login.component';
 import { GeolocationService } from './geolocation.service';
 import { DistancePipe } from './distance.pipe';
+import { AgmCoreModule } from 'angular2-google-maps/core';
+import { HeroMapsComponent } from './hero-maps/hero-maps.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { DistancePipe } from './distance.pipe';
     HeroEditComponent,
     NotificationsComponent,
     LoginComponent,
-    DistancePipe
+    DistancePipe,
+    HeroMapsComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,10 @@ import { DistancePipe } from './distance.pipe';
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig, firebaseConfigAuth),
     AlertModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDmHG5EeM2t0urxg9KOnA1F6K5wNj5UnW0'
+    }),
   ],
   providers: [HeroService, NotificationService, HeroResolver, AuthGuardService, AuthService, GeolocationService],
   bootstrap: [AppComponent]

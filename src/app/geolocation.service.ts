@@ -40,7 +40,7 @@ export class GeolocationService {
 
     }
 
-    getDistanceFromLatLonInKm(locationStarted: Location, locationFinished: Location) {
+    getDistanceFromLatLonInKm(locationStarted: any, locationFinished: any) {
 
         if (!locationStarted || !locationFinished)
             return 0;
